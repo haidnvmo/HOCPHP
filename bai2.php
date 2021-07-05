@@ -14,20 +14,17 @@
         <div class="row">
             <div class="col-sm-4-md-6">
             <?php 
-                $a = $b = $c = '';
-                $delta = ($b*$b) - 4*$a*$c;
+                $a = $b = $c = 0;
                 $x1 = "";
                 $x2 = ""; 
-                if(isset($_POST['calcula)te'])){
-                    if (is_numeric($_POST['a']) && is_numeric($_POST['b']) && is_numeric($_POST['c'])) {
-                        $a = isset($_POST['a']) ? $_POST['a'] : '';
-                        $b = isset($_POST['b']) ? $_POST['b'] : '';
-                        $c = isset($_POST['c']) ? $_POST['c'] : '';
-                    } else {
-                        echo 1;
-                    }
-                
+                if(isset($_POST['calculate'])){
+                    $a = isset($_POST['a']) ? $_POST['a'] : '';
+                    $b = isset($_POST['b']) ? $_POST['b'] : '';
+                    $c = isset($_POST['c']) ? $_POST['c'] : '';
+
+                    $delta = ($b*$b) - 4*$a*$c;
                     if ($delta > 0) {
+
                         $x1 = (- $b + sqrt ( $delta )) / (2 * $a);
                         $x2 = (- $b - sqrt ( $delta )) / (2 * $a);
                         echo ("Phương trình có 2 nghiệm là: " . "x1 = " . $x1 . " và x2 = " . $x2);
@@ -42,12 +39,12 @@
                                                           
             ?>
                 <h1>Giải phương trình bậc hai</h1>
-                <form method="post" action="">
-                    <input type="number" style="width: 20px" name="a" value=""/>x <sup>2</sup>
+                <form method="POST" action="">
+                    <input type="text" style="width: 20px" name="a" value=""/>x <sup>2</sup>
                     +
-                    <input type="number" style="width: 20px" name="b" value=""/>x
+                    <input type="text" style="width: 20px" name="b" value=""/>x
                     + 
-                    <input type="number" style="width: 20px" name="c" value=""/>
+                    <input type="text" style="width: 20px" name="c" value=""/>
                     = 0
                     <br/><br/>
                     <input type="submit" name="calculate" value="Tính" />
