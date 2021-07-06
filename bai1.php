@@ -11,11 +11,9 @@
             $a = $b = '';
             if (isset($_POST['calculate']))
             {
-                // Bước 1: Lấy thông tin
                 $a = isset($_POST['a']) ? (float)trim($_POST['a']) : '';
                 $b = isset($_POST['b']) ? (float)trim($_POST['b']) : '';
-             
-                // Bước 2: Validate thông tin và tính toán
+
                 if ($a == ''){
                     $result = 'Bạn chua nhập số a';
                 }
