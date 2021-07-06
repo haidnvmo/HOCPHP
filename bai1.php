@@ -13,7 +13,8 @@
             {
                 $a = isset($_POST['a']) ? (float)trim($_POST['a']) : '';
                 $b = isset($_POST['b']) ? (float)trim($_POST['b']) : '';
-
+             
+                
                 if ($a == ''){
                     $result = 'Bạn chua nhập số a';
                 }
