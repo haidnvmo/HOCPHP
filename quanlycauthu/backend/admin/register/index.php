@@ -10,15 +10,15 @@
          } else {
             $name = $_POST['name'];
          }
-        if(isset($_POST['email'])){
-            $email = $_POST['email'];
-        } else {
+        if(empty($_POST['email'])){
             $errorEmail = "vui long nhap email";
-        }
-        if(isset($_POST['password'])){
-            $password = md5($_POST['password']);
         } else {
+            $email = $_POST['email'];           
+        }
+        if(empty($_POST['password'])){
             $errorpassword = "vui long nhap password";
+        } else {
+            $password = md5($_POST['password']);         
         }
         if($name && $email && $password){
             $sql = 'INSERT INTO quanlycauthu.admin (email, password, name) values("'.$email.'", "'.$password.'", "'.$name.'")';

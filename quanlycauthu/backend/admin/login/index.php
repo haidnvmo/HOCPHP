@@ -6,7 +6,6 @@
    $email = $password  ="";
    $errorEmail = $errorPassword ="";
    if(isset($_POST['login'])){
-   
       if(empty($_POST['email'])){
          $errorEmail = "vui long nhap email";
       } else {
@@ -50,7 +49,7 @@
                      <div class="form-check col-md-offset-4">
                      <button type="submit" name ="login" class="btn btn-login float-right">Login</button>
                   </div>
-            </form>
+               </form>
          </div>
       </div>
    </div>

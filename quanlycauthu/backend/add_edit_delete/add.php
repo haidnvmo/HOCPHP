@@ -5,35 +5,43 @@
     $name = $age = $position = $national = $salary = $id = "";
     $errorName =  $errorAge = $errorPosition = $errorNational = $errorSalary = "";
     if(isset($_POST['add'])){
-        if(isset($_POST['name'])){
-            $name = $_POST['name'];
-        } else {
+        if(isset($_POST['id'])){
+            $id = $_POST['id'];
+        }
+        if(empty($_POST['name'])){
             $errorName = "vui long nhap ten cau thu";
-        }
-        if(isset($_POST['age'])){
-            $age = $_POST['age'];
         } else {
+            $name = $_POST['name'];
+         
+        }
+        if(empty($_POST['age'])){
             $errorAge = "vui long nhap tuoi cau thu";
-        } 
-        if(isset($_POST['position'])){
-            $position = $_POST['position'];
         } else {
+            $age = $_POST['age'];            
+        } 
+        if(empty($_POST['position'])){
             $errorPosition = "vui long nhap chuc vu cau thu";
+        } else {
+            $position = $_POST['position'];         
         } 
-        if(isset($_POST['national'])){
-            $national = $_POST['national'];
-        } else {
+        if(empty($_POST['national'])){
             $errorNational = "vui long nhap quoc gia cau thu";
-        }
-        if(isset($_POST['salary'])){
-            $salary = $_POST['salary'];
         } else {
+            $national = $_POST['national'];
+        }
+        if(empty($_POST['salary'])){
             $errorSalary = "vui long nhap luong cau thu";
+        } else {
+            $salary = $_POST['salary'];         
         }
         if($name && $age && $position && $national && $salary){
-            
-            $sql = 'INSERT INTO quanlycauthu.players (name, age, national, position, salary) values("'.$name.'", "'.$age.'", "'.$position.'", "'.$national.'", "'.$salary.'")';
+            if($id == ""){
+                $sql = 'INSERT INTO quanlycauthu.players (name, age, national, position, salary) values("'.$name.'", "'.$age.'", "'.$national.'", "'.$national.'", "'.$salary.'")';            
+            } else {
+                $sql = 'UPDATE quanlycauthu.players set name = "'.$name.'", age = "'.$age.'", national = "'.$national.'", position = "'.$position.'", salary = "'.$salary.'" where id = "'.$id.'" ';
+            }
             execute($sql);
+            header("location:select_cauthu.php");
         }
     }
     if(isset($_GET['id'])){
@@ -44,8 +52,8 @@
             $name = $result['name'];
             $age = $result['age'];
             $national = $result['national'];
-            $position = $result['name'];
-            $salary = $result['name'];
+            $position = $result['position'];
+            $salary = $result['salary'];
         }
     }
 ?>  
@@ -62,24 +70,34 @@
       </div>
       <div class="form-group">
          <label for="exampleInputPassword1" class="text-uppercase">Age<sup>*</sup></label>
-         <input type="number" name='age' class="form-control" placeholder="">
+         <input type="number" name='age' value="<?= $age ?>" class="form-control" placeholder="">
          <span style="color:red;"><?php echo $errorAge; ?></span>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1" class="text-uppercase">National<sup>*</sup></label>
-        <input type="text" name='national' class="form-control" placeholder="">
+        <input type="text" name='national' value="<?= $national ?>" class="form-control" placeholder="">
         <span style="color:red;"><?php echo $errorNational; ?></span>
      </div>
      <div class="form-group">
         <label for="exampleInputPassword1" class="text-uppercase">position<sup>*</sup></label>
-        <input type="text" name='position' class="form-control" placeholder="">
+        <input type="text" name='position' value="<?= $position ?>" class="form-control" placeholder="">
         <span style="color:red;"><?php echo $errorPosition; ?></span>
      </div>
      <div class="form-group">
         <label for="exampleInputPassword1" class="text-uppercase">salary <sup>*</sup></label>
-        <input type="number" name='salary' class="form-control" placeholder="">
+        <input type="number" name='salary' value="<?= $salary ?>" class="form-control" placeholder="">
         <span style="color:red;"><?php echo $errorSalary; ?></span>
      </div>
+     
+     <!-- <select name="nam" id="inputnam" class="form-control" required="required">
+     <label for="exampleInputPassword1" class="text-uppercase">Nam<sup>*</sup></label>
+        <?php
+            // for ($i=1970; $i < 2021; $i++) { 
+            //     echo '<option value="">'.$i.'</option>';
+            // }
+        ?>      
+     </select> -->
+     
       <div class="form-check col-md-offset-4">
         <button type="submit" name ="add" class="btn btn-login float-right">Thêm cẩu thủ</button>
       </div>

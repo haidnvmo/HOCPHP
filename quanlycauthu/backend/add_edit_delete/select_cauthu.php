@@ -8,8 +8,8 @@
     }
     include("../connect/db.php");
     include("../layout/header.php");
-    
 
+   
 ?>  
     <sessection>
         <div class="container ">
@@ -19,6 +19,9 @@
                     <a href="add.php">
 					    <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Danh Mục</button>
 				    </a>
+                    <form action="search.php" method="GET">
+                        <button class="btn btn-success" name="search" id="" style="margin-bottom: 15px;">Tìm cầu Thủ</button>
+                    </form>
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -31,20 +34,19 @@
                         </thead>
                         <tbody>
                         <?php
-                            $sql = 'SELECT * FROM quanlycauthu.players';
-                            $reulst = executeResult($sql);
-                            foreach($reulst as $value){
-                                echo '<tr>
-                                        <td>'.$value['name'].'</td>
-                                        <td>'.$value['age'].'</td>
-                                        <td>'.$value['national'].'</td> 
-                                        <td>'.$value['position'].'</td>
-                                        <td>'.$value['salary'].'</td>
-                                        <td><a href="add.php?id='.$value['id'].'">Edit</a></td>
-                                        <td><a href="delete.php?id='.$value['id'].'">Delete</a></td>
-                                    </tr>';
-                            }
-                           
+                                $sql = 'SELECT * FROM quanlycauthu.players';
+                                $reulst = executeResult($sql);
+                                foreach($reulst as $value){
+                                    echo '<tr>
+                                            <td>'.$value['name'].'</td>
+                                            <td>'.$value['age'].'</td>
+                                            <td>'.$value['national'].'</td> 
+                                            <td>'.$value['position'].'</td>
+                                            <td>'.$value['salary'].'</td>
+                                            <td><a href="add.php?id='.$value['id'].'">Edit</a></td>
+                                            <td><a href="delete.php?id='.$value['id'].'">Delete</a></td>
+                                        </tr>';
+                                }                                                 
                         ?>
                         </tbody>
                         
