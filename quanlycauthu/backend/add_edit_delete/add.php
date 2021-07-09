@@ -9,39 +9,40 @@
             $id = $_POST['id'];
         }
         if(empty($_POST['name'])){
-            $errorName = "vui long nhap ten cau thu";
+            $errorName = "Vui lòng nhập cầu thủ";
         } else {
             $name = $_POST['name'];
          
         }
         if(empty($_POST['age'])){
-            $errorAge = "vui long nhap tuoi cau thu";
+            $errorAge = "Vui lòng nhập tuổi cầu thủ";
         } else {
             $age = $_POST['age'];            
         } 
         if(empty($_POST['position'])){
-            $errorPosition = "vui long nhap chuc vu cau thu";
+            $errorPosition = "Vui lòng nhập chức vụ";
         } else {
             $position = $_POST['position'];         
         } 
         if(empty($_POST['national'])){
-            $errorNational = "vui long nhap quoc gia cau thu";
+            $errorNational = "Vui lòng nhập Quốc Gia";
         } else {
             $national = $_POST['national'];
         }
         if(empty($_POST['salary'])){
-            $errorSalary = "vui long nhap luong cau thu";
+            $errorSalary = "Vui lòng nhập Lương cầu thủ";
         } else {
             $salary = $_POST['salary'];         
         }
         if($name && $age && $position && $national && $salary){
             if($id == ""){
-                $sql = 'INSERT INTO quanlycauthu.players (name, age, national, position, salary) values("'.$name.'", "'.$age.'", "'.$national.'", "'.$national.'", "'.$salary.'")';            
-            } else {
+                $sql = 'INSERT INTO quanlycauthu.players (name, age, national, position, salary) values("'.$name.'", "'.$age.'", "'.$national.'", "'.$national.'", "'.$salary.'")';
+            } else {               
                 $sql = 'UPDATE quanlycauthu.players set name = "'.$name.'", age = "'.$age.'", national = "'.$national.'", position = "'.$position.'", salary = "'.$salary.'" where id = "'.$id.'" ';
             }
             execute($sql);
             header("location:select_cauthu.php");
+            die();
         }
     }
     if(isset($_GET['id'])){
@@ -68,11 +69,22 @@
          <input type="text" name='name' value="<?= $name ?>"  class="form-control" placeholder="">
          <span style="color:red;"><?php echo $errorName; ?></span>
       </div>
-      <div class="form-group">
-         <label for="exampleInputPassword1" class="text-uppercase">Age<sup>*</sup></label>
-         <input type="number" name='age' value="<?= $age ?>" class="form-control" placeholder="">
-         <span style="color:red;"><?php echo $errorAge; ?></span>
-      </div>
+      <!-- <div class="form-group">
+        
+         <input type="number" name='age' value="" class="form-control" placeholder="">
+        
+      </div> -->
+      <label for="exampleInputPassword1" class="text-uppercase">Age<sup>*</sup></label>
+      <select name="age" id="inputage" class="form-control" required="required">
+        <?php
+           for ($i=15; $i < 40; $i++) { 
+                echo '<option value="'.$i.'">'.$i.'</option>';
+            }
+        ?>
+        
+      </select>
+      <span style="color:red;"><?php echo $errorAge; ?></span>
+      
       <div class="form-group">
         <label for="exampleInputPassword1" class="text-uppercase">National<sup>*</sup></label>
         <input type="text" name='national' value="<?= $national ?>" class="form-control" placeholder="">

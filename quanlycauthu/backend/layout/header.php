@@ -17,6 +17,16 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
         <![endif]-->
-        <link rel="stylesheet" href="../css/css/style.css">  
+        <link rel="stylesheet" href="../css/css/style.css">
+        <style>
+            body{
+            background-size
+            background-repeat: no-repeat;
+            background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fione.net%2Fanh-chup-voi-cua-cuc-tinh-y-tren-phim-truong-duoc-khen-dep-nhu-poster-4233390.html&psig=AOvVaw3-E-KnHRfgI-P5llY5naug&ust=1625910615553000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCPijmZjb1fECFQAAAAAdAAAAABAD');
+            }
+        </style>
     </head>
     <body>
+    
+   
+    
